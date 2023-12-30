@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
-const AddNote = () => {
+const AddNote = ({ getNotes }) => {
   // define state
   const [note, setNote] = useState("");
 
   // add new note
   const addNote = async (e) => {
     e.preventDefault();
-    
+
+    if (note.trim().length === 0) {
+      alert("Please enter a valid note.");
+      return;
+    }
+
     try {
       await fetch(
         "https://firenote-fffd1-default-rtdb.firebaseio.com/notes.json",
@@ -20,6 +25,7 @@ const AddNote = () => {
         }
       );
       setNote("");
+      getNotes();
     } catch (err) {
       alert("Something went wrong. Try again...");
     }

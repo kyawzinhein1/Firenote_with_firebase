@@ -1,12 +1,12 @@
 import React from "react";
 
-const Navbar = ({ getNotes }) => {
+const Navbar = ({ getNotes, totalNote }) => {
   return (
-    <section className="d-flex align-items-center justify-content-between px-5">
-      <h1 className="my-3 text-primary fw-bold">Note</h1>
-      <button className="btn btn-primary" onClick={getNotes}>
-        Refresh
-      </button>
+    <section className="d-flex align-items-center justify-content-between px-4 mt-4 mb-3">
+      <h1 className=" text-primary fw-bold">Note</h1>
+      <p className="btn btn-primary">
+        Total Note - <span>{totalNote}</span>
+      </p>
     </section>
   );
 };
